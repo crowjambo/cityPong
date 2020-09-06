@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class LevelManager : MonoBehaviour
     public Text player2ScoreText;
     public static int player1Score = 0;
     public static int player2Score = 0;
+    public Transform ballSpawnLocation;
+    public BallController ball;
+    public Transform leftSide;
+    public Transform rightSide;
 
     private void Awake()
     {
@@ -37,8 +42,20 @@ public class LevelManager : MonoBehaviour
 
     private void Reset()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+
+        System.Random rnd = new System.Random();
+        int side = rnd.Next(0, 100);
+
+        ball.transform.position = ballSpawnLocation.position;
+        var rb = ball.GetComponent<Rigidbody>();
+
+        if (side < 50)
+        {
+            rb.AddForce(leftSide.position * 0.5f, ForceMode.Impulse);
+        } else
+        {
+            rb.AddForce(rightSide.position * 0.5f, ForceMode.Impulse);
+        }
     }
 
     void PlayerScored(int player)
@@ -86,7 +103,7 @@ public class LevelManager : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
-                timeText.gameObject.SetActive(false);
+                timeText.gameObject.GetComponent<Text>().enabled = false;
 
                 //unpause game
                 Time.timeScale = 1;
