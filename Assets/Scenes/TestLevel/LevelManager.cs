@@ -12,16 +12,33 @@ public class LevelManager : MonoBehaviour
     public Text timeText;
     public Text player1ScoreText;
     public Text player2ScoreText;
-    public int player1Score = 0;
-    public int player2Score = 0;
+    public static int player1Score = 0;
+    public static int player2Score = 0;
 
     private void Awake()
     {
+
         Time.timeScale = 0;
- 
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
-        
+
+        if (player1Score > 0)
+        {
+            player1ScoreText.text = player1ScoreText.text = string.Format("{0}", player1Score / 2);
+
+        }
+        if (player2Score > 0)
+        {
+            player2ScoreText.text = string.Format("{0}", player2Score / 2);
+
+        }
+
+    }
+
+    private void Reset()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     void PlayerScored(int player)
@@ -39,7 +56,7 @@ public class LevelManager : MonoBehaviour
                 break;
         }
 
-        //Reset counter + ball
+        Reset();
     }
 
     // Start is called before the first frame update

@@ -11,6 +11,9 @@ public class BallController : MonoBehaviour
     public Transform leftSide;
     public Transform rightSide;
 
+    public delegate void OnScore(int player);
+    public static event OnScore onScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,7 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Border") || collision.gameObject.tag.Equals("Paddle"))
+        if (collision.gameObject.tag.Equals("Paddle"))
         {
             var collisionPoint = collision.contacts[0].point;
             Debug.Log("collision detected");
@@ -39,6 +42,16 @@ public class BallController : MonoBehaviour
                 force += 0.1f;
             }
         }
-            
+
+        if (collision.gameObject.name.Equals("borderLeft"))
+        {
+            onScore(1);
+        }
+
+        if (collision.gameObject.name.Equals("borderRight"))
+        {
+            onScore(2);
+        }
+
     }
 }
