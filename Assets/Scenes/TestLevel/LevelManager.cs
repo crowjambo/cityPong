@@ -13,8 +13,8 @@ public class LevelManager : MonoBehaviour
     public Text timeText;
     public Text player1ScoreText;
     public Text player2ScoreText;
-    public static int player1Score = 0;
-    public static int player2Score = 0;
+    public int player1Score = 0;
+    public int player2Score = 0;
     public Transform ballSpawnLocation;
     public BallController ball;
     public Transform leftSide;
@@ -22,22 +22,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-
         Time.timeScale = 0;
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
-
-        if (player1Score > 0)
-        {
-            player1ScoreText.text = player1ScoreText.text = string.Format("{0}", player1Score / 2);
-
-        }
-        if (player2Score > 0)
-        {
-            player2ScoreText.text = string.Format("{0}", player2Score / 2);
-
-        }
-
     }
 
     private void Reset()
@@ -63,11 +50,11 @@ public class LevelManager : MonoBehaviour
         switch (player) {
             case 1:
                 player1Score += 1;
-                player1ScoreText.text = string.Format("{0}", player1Score / 2);
+                player1ScoreText.text = string.Format("{0}", player1Score);
                 break;
             case 2:
                 player2Score += 1;
-                player2ScoreText.text = string.Format("{0}", player2Score / 2);
+                player2ScoreText.text = string.Format("{0}", player2Score);
                 break;
             default:
                 break;
@@ -79,6 +66,10 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //timeText = GameObject.Find("timerText").GetComponent<Text>();
+        //player1ScoreText = GameObject.Find("player1Score").GetComponent<Text>();
+        //player2ScoreText = GameObject.Find("player2Score").GetComponent<Text>();
+
         timerIsRunning = true;
 
         BallController.onScore += PlayerScored;
@@ -114,7 +105,7 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            Application.Quit();
         }
 
 
