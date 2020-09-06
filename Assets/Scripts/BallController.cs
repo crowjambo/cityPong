@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-
+    public float maxForce = 3;
     public float force = 0.5f;
     public Rigidbody rb;
     public Transform leftSide;
     public Transform rightSide;
-
-    public Transform originalObject;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +31,13 @@ public class BallController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Border"))
         {
+            var collisionPoint = collision.contacts[0].point;
             Debug.Log("collision detected");
-
+            rb.AddForce(collisionPoint * -force, ForceMode.Impulse);
+            if (force <= maxForce)
+            {
+                force += 0.1f;
+            }
         }
             
     }
