@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float maxForce = 3;
+    public float maxForce = 1.5f;
     public float force = 0.5f;
     public Rigidbody rb;
     public Transform leftSide;
@@ -29,7 +29,7 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Border"))
+        if (collision.gameObject.tag.Equals("Border") || collision.gameObject.tag.Equals("Paddle"))
         {
             var collisionPoint = collision.contacts[0].point;
             Debug.Log("collision detected");
