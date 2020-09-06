@@ -25,8 +25,26 @@ public class PaddleController : MonoBehaviour
     {
         var move = new Vector3(-Input.GetAxis(inputAxis), 0, 0);
         move = move * force * Time.deltaTime;
-        Debug.Log(move);
+        //Debug.Log(move);
         transform.Translate(move);
 
     }
- }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag.Equals("TopWall"))
+        {
+            var move = new Vector3(-1, 0, 0);
+            move = move * force * Time.deltaTime;
+            transform.Translate(move);
+        }
+        if (collision.gameObject.tag.Equals("BottomWall"))
+        {
+            var move = new Vector3(1, 0, 0);
+            move = move * force * Time.deltaTime;
+            transform.Translate(move);
+        }
+    }
+
+}

@@ -204,6 +204,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201284645}
   m_CullTransparentMesh: 0
+--- !u!114 &217969253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6602326033761518624, guid: f8c11e36ec53b47a6b46476911fb1c53, type: 3}
+  m_PrefabInstance: {fileID: 6602326035129194850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606cccd9cb8743a4db9431d9e7eae5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &596564244
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,8 +283,10 @@ MonoBehaviour:
   timeText: {fileID: 1704988268}
   player1ScoreText: {fileID: 201284647}
   player2ScoreText: {fileID: 1251482627}
-  player1Score: 0
-  player2Score: 0
+  ballSpawnLocation: {fileID: 1603328328}
+  ball: {fileID: 217969253}
+  leftSide: {fileID: 670088273}
+  rightSide: {fileID: 1214094128}
 --- !u!4 &761270547
 Transform:
   m_ObjectHideFlags: 0
@@ -446,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.43881062
       objectReference: {fileID: 0}
+    - target: {fileID: 6950814852782366475, guid: 10d98d05738a335459200657a6fbea16, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: e2039ea27f5ba445a9655d6d946351d9, type: 2}
     - target: {fileID: 7227125089875779023, guid: 10d98d05738a335459200657a6fbea16, type: 3}
       propertyPath: m_Name
       value: Paddle (1)
@@ -577,6 +594,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.43881062
       objectReference: {fileID: 0}
+    - target: {fileID: 6950814852782366475, guid: 10d98d05738a335459200657a6fbea16, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: e2039ea27f5ba445a9655d6d946351d9, type: 2}
     - target: {fileID: 7227125089875779023, guid: 10d98d05738a335459200657a6fbea16, type: 3}
       propertyPath: m_Name
       value: Paddle
@@ -1255,7 +1276,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f6b9ee5b13f574555b8c492f2b8433c8, type: 2}
     - target: {fileID: 360153322894032268, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TopWall
       objectReference: {fileID: 0}
     - target: {fileID: 509270464049505203, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
       propertyPath: m_Enabled
@@ -1269,6 +1290,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f6b9ee5b13f574555b8c492f2b8433c8, type: 2}
+    - target: {fileID: 1132061613653681348, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: e2039ea27f5ba445a9655d6d946351d9, type: 2}
+    - target: {fileID: 2187824247869966240, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: e2039ea27f5ba445a9655d6d946351d9, type: 2}
     - target: {fileID: 4028537660854133212, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
       propertyPath: m_TagString
       value: Border
@@ -1347,7 +1376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8055333501512000121, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: BottomWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
