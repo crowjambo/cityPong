@@ -11,16 +11,31 @@ public class BallController : MonoBehaviour
     public Transform leftSide;
     public Transform rightSide;
 
+    public Transform originalObject;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        rb.AddForce(leftSide.position * force, ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
         //rb.AddForce(transform.forward * force);
-        rb.AddForce(leftSide.position * force);
+        //rb.AddForce(leftSide.position * force);
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Border"))
+        {
+            Debug.Log("collision detected");
+
+        }
+            
     }
 }

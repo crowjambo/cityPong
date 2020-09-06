@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &584727529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2536994314960461092, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
+  m_PrefabInstance: {fileID: 9131454320003085099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &670088273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7706324951564390349, guid: fc85e29c8d9424bc1b929c1c49a4654b, type: 3}
@@ -323,6 +328,14 @@ PrefabInstance:
       propertyPath: rightSide
       value: 
       objectReference: {fileID: 1214094128}
+    - target: {fileID: 6602326033761518624, guid: f8c11e36ec53b47a6b46476911fb1c53, type: 3}
+      propertyPath: originalObject
+      value: 
+      objectReference: {fileID: 584727529}
+    - target: {fileID: 6602326033761518624, guid: f8c11e36ec53b47a6b46476911fb1c53, type: 3}
+      propertyPath: reflectedObject
+      value: 
+      objectReference: {fileID: 6602326035129194851}
     - target: {fileID: 6602326033761518626, guid: f8c11e36ec53b47a6b46476911fb1c53, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -381,6 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c11e36ec53b47a6b46476911fb1c53, type: 3}
+--- !u!4 &6602326035129194851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6602326033761518628, guid: f8c11e36ec53b47a6b46476911fb1c53, type: 3}
+  m_PrefabInstance: {fileID: 6602326035129194850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9131454320003085099
 PrefabInstance:
   m_ObjectHideFlags: 0
