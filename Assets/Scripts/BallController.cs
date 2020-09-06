@@ -35,7 +35,11 @@ public class BallController : MonoBehaviour
         if (collision.gameObject.tag.Equals("Paddle"))
         {
             var collisionPoint = collision.contacts[0].point;
-            Debug.Log("collision detected");
+            //
+            
+            
+            
+            //Debug.Log("collision detected");
             rb.AddForce(collisionPoint * -force, ForceMode.Impulse);
             if (force <= maxForce)
             {

@@ -9,6 +9,7 @@ public class PaddleController : MonoBehaviour
     public Transform bottomTrans;
     public Transform topTrans;
     public string inputAxis;
+    bool isColliding = false;
 
     bool TouchingWalls;
 
@@ -25,26 +26,39 @@ public class PaddleController : MonoBehaviour
     {
         var move = new Vector3(-Input.GetAxis(inputAxis), 0, 0);
         move = move * force * Time.deltaTime;
-        //Debug.Log(move);
+        //Debug.Log(move);f
+        if (!isColliding)
+        {
+        }
+
+        var botLimitIsReached = (transform.position.x >= 7f);
+        var topLimitIsReached = (transform.position.x <= -7f);
+
+        if (botLimitIsReached)
+        {
+            transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z);
+        }
+        if (topLimitIsReached)
+        {
+            transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z);
+        }
+
         transform.Translate(move);
+
+
 
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag.Equals("TopWall"))
-        {
-            var move = new Vector3(-1, 0, 0);
-            move = move * force * Time.deltaTime;
-            transform.Translate(move);
-        }
-        if (collision.gameObject.tag.Equals("BottomWall"))
-        {
-            var move = new Vector3(1, 0, 0);
-            move = move * force * Time.deltaTime;
-            transform.Translate(move);
-        }
+        isColliding = true;
+        Debug.Log(isColliding);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isColliding = false;
     }
 
 }
